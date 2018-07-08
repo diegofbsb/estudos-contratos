@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Context reloadable="true">
+	<Resource name="jdbc/contratos" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="10000" username="root" password="root"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://127.0.0.1:3306/contratos?autoReconnect=true">
+	</Resource>
+	<Resource name="mail/Session" auth="Container" type="javax.mail.Session"
+		mail.smtp.host="localhost" mail.smtp.port="25" mail.smtp.auth="false"
+		mail.smtp.user="diego.fernando.santosbsb@gmail.com" mail.smtp.password="bobhortencia12345" />
+</Context>

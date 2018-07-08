@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">
+	</ui:define>
+	<ui:define name="corpo">
+		<p:messages id="messages" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<h:form id="edicao-e-lista">
+			<p:dataTable var="contratos" value="#{ContratosBean.lista}"
+				emptyMessage="Contratos não encontrado">
+
+				<p:column headerText="Código" styleClass="text-center">
+					<h:outputText value="#{contratos.id}" />
+				</p:column>
+
+				<p:column headerText="Contrato" styleClass="text-center">
+					<h:outputText value="#{contratos.numero_contrato}" />
+				</p:column>
+
+				<p:column headerText="Data" styleClass="text-center">
+					<h:outputText value="#{contratos.data_contrato}"
+						converter="javax.faces.DateTime" />
+				</p:column>
+
+				<p:column headerText="Valor" styleClass="text-center">
+					<h:outputText value="R$ #{contratos.valor_contrato}" />
+				</p:column>
+
+				<p:column headerText="Opções" styleClass="text-center">
+					<p:commandButton style="margin-right-:20px;" icon="ui-icon-pencil"
+						update="formDlgAtualiza" onclick="PF('dlgAtualiza').show();"
+						action="#{ContratosBean.selecionar()}">
+						<f:setPropertyActionListener target="#{ContratosBean.selecionada}"
+							value="#{contratos}" />
+					</p:commandButton>
+					<p:spacer width="20" height="10" />
+					<p:commandButton icon="ui-icon-trash" update="formExclui"
+						onclick="PF('dlgExclui').show();"
+						action="#{ContratosBean.selecionar()}">
+						<f:setPropertyActionListener target="#{ContratosBean.selecionada}"
+							value="#{contratos}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+
+		<p:dialog widgetVar="dlgAtualiza" styleClass="modal-atualiza"
+			modal="true" draggable="false" dynamic="false" resizable="false"
+			header="Atualizar Contrato" showEffect="explode" hideEffect="bounce" >
+			<h:form id="formDlgAtualiza">
+				<p:messages id="messages" closable="true">
+					<p:effect type="pulsate" event="load" queue="false"/>
+					<p:autoUpdate />
+				</p:messages>
+				<h:panelGrid id="painelGrid" columns="1" style="margin:10px 0">
+					<p:outputLabel for="idContrato" value="ID Contrato"
+						style="font-weight:bold" />
+					<h:inputHidden value="#{ContratosBean.selecionada.id}" />
+					<p:inputText id="idContrato" disabled="true"
+						value="#{ContratosBean.selecionada.id}" size="50" />
+					<br />
+					<p:outputLabel for="numContrato" value="Num Contrato"
+						style="font-weight:bold" />
+					<p:inputText id="numContrato"
+						value="#{ContratosBean.selecionada.numero_contrato}" size="50"
+						required="true" requiredMessage="Informe o número do contrato!" />
+					<br />
+					<p:outputLabel for="data" value="Data" />
+					<p:calendar id="data"
+						value="#{ContratosBean.selecionada.data_contrato}"
+						navigator="true" pattern="dd/mm/yyyy" size="50" showOn="button"
+						required="true" requiredMessage="Informe o data do contrato!" />
+					<br />
+					<p:outputLabel for="valor" value="Valor" style="font-weight:bold" />
+					<p:inputNumber id="valor"
+						value="#{ContratosBean.selecionada.valor_contrato}" symbol="R$ "
+						required="true" requiredMessage="Informe o valor do contrato!" />
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Salvar" icon="ui-icon-extlink"
+					actionListener="#{ContratosBean.update()}" />
+			</h:form>
+		</p:dialog>
+
+
+
+		<p:dialog widgetVar="dlgExclui" styleClass="modal-atualiza"
+			modal="true" draggable="false" dynamic="false" resizable="false"
+			header="Excluir Contrato" showEffect="explode" hideEffect="bounce">
+			<h:form id="formExclui">
+				<p:messages id="messages" closable="true">
+					<p:effect type="pulsate" event="load" delay="500" />
+					<p:autoUpdate />
+				</p:messages>
+				<h:panelGrid id="painelGrid" columns="1" style="margin:10px 0">
+					<p:outputLabel for="idContrato" value="ID Contrato"
+						style="font-weight:bold" />
+					<h:inputHidden value="#{ContratosBean.selecionada.id}" />
+					<p:inputText id="idContrato" disabled="true"
+						value="#{ContratosBean.selecionada.id}" size="50" />
+					<br />
+
+					<p:outputLabel for="numContrato" value="Num Contrato"
+						style="font-weight:bold" />
+					<h:inputHidden value="#{ContratosBean.selecionada.numero_contrato}" />
+					<p:inputText id="numContrato" disabled="true"
+						value="#{ContratosBean.selecionada.numero_contrato}" size="50" />
+					<br />
+
+					<!-- 					<p:outputLabel for="data" value="Data" /> -->
+					<!-- 					<h:inputHidden value="#{ContratosBean.selecionada.data_contrato}" /> -->
+					<!-- 					<p:calendar id="data" disabled="true" -->
+					<!-- 						value="#{ContratosBean.selecionada.data_contrato}" locale="pt" -->
+					<!-- 						navigator="true" pattern="dd/mm/yyyy" size="50" /> -->
+					<!-- 					<br /> -->
+
+					<p:outputLabel for="valor" value="Valor" style="font-weight:bold" />
+					<h:inputHidden value="#{ContratosBean.selecionada.valor_contrato}" />
+					<p:inputNumber id="valor" disabled="true"
+						value="#{ContratosBean.selecionada.valor_contrato}" symbol="R$ " />
+				</h:panelGrid>
+				<br />
+				<p:commandButton value="Excluir" icon="ui-icon-trash"
+					actionListener="#{ContratosBean.excluir()}"
+					oncomplete="close(dlgExclui);" />
+			</h:form>
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>
+</html>

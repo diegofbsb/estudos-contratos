@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">
+
+	</ui:define>
+	<ui:define name="corpo">
+		<form>
+			<p:messages id="messages" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+		</form>
+
+		<h:form id="novo" style="text-align: center;">
+			<h:panelGrid columns="9" style="margin:10px 0">
+
+				<p:outputLabel for="numContrato" value="Num Contrato"
+					style="font-weight:bold" />
+				<p:inputText id="numContrato" style="width: 100px;" type="number"
+					value="#{ContratosBean.contratostela.numero_contrato}" size="11"
+					required="true" requiredMessage="Informe o número do contrato!" />
+				<br />
+				<p:outputLabel for="data" value="Data" style="font-weight:bold" />
+				<p:calendar id="data"
+					value="#{ContratosBean.contratostela.data_contrato}" locale="de"
+					navigator="true" pattern="dd/mm/yyyy" size="10" required="true"
+					requiredMessage="Informe a data de abertura!" />
+				<br />
+				<p:outputLabel for="valor" value="Valor" style="font-weight:bold" />
+				<p:inputNumber id="valor"
+					value="#{ContratosBean.contratostela.valor_contrato}" symbol="R$ "
+					required="true" requiredMessage="Informe o valor do contrato!" />
+
+			</h:panelGrid>
+			<br />
+			<p:commandButton value="Salvar" icon="ui-icon-extlink"
+				actionListener="#{ContratosBean.salvar}" style="text" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,135 @@
+body, td, th {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-weight: normal
+}
+
+header {
+	padding: 5px;
+	margin-bottom: 20px;
+	height: 30px;
+	background-color: #545454;
+	color: #fff;
+	box-shadow: 0px 2px 2px #ccc
+}
+
+th {
+	/*background: url("#{resource['imagens:fundo_claro.png']}");*/
+	min-height: 25px;
+	padding: 3px;
+}
+
+img {
+	border: 0px;
+}
+
+#container {
+	height: 100%;
+	margin: 0 auto;
+}
+
+#titulo {
+	float: left;
+	font-size: 25pt;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#barra_menu2 {
+	/*background: url("#{resource['imagens:fundo_barra_menu.png']}");*/
+	min-height: 25px;
+	padding: 3px;
+	clear: both;
+}
+
+#corpo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	min-height: 300px;
+}
+
+#rodape {
+	/*background: url("#{resource['imagens:fundo_barra_rodape.png']}") repeat-x;*/
+	margin-top: 20%;
+	height: 100px;
+	padding: 10px;
+	text-align: center;
+}
+
+#conteudo {
+	padding: 0px 8px;
+}
+
+footer {
+	border-top: 1px solid #ccc;
+	padding: 5px 8px;
+	margin-top: 20px;
+	margin-bottom: 10px
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: 500;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 10px
+}
+
+.ajax-status {
+	position: fixed;
+	top: 85px;
+	right: 10px;
+	width: 35px;
+	height: 35px
+}
+
+#login-dialog {
+	width: 260px;
+	margin: auto;
+	margin-top: 150px;
+}
+
+.grid-login {
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	margin-top: 8px;
+	padding: 10px;
+	width: 50%
+}
+
+.form-login {
+	margin-left: 40%;
+	width: 30%;
+	margin-top: 12%
+}
+
+/*.menu-bar{
+	margin-top: 1%;
+}*/
+.espaco-menu {
+	margin-left: 20px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#mensagem-erro-login {
+	color: red;
+	font-size: 15px;
+	font-weight: bold
+}
+
+.modal-atualiza {
+	border: 0;
+}
+
+.data {
+	width: 30px;
+}
+
+.valor {
+	width: 100px;
+}
