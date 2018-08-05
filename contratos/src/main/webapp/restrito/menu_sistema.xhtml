@@ -23,12 +23,12 @@
 			</div>
 			<br />
 			<div style="margin-top: -50px;">
-			<p:spacer height="10" />
+				<p:spacer height="10" />
 				<h:selectOneMenu value="#{contextoBean.contaAtiva.conta}"
 					valueChangeListener="#{contextoBean.setContaAtiva}"
 					rendered="#{!empty contextoBean}" onchange="submit()"
 					disabled="true">
-					<h:outputText value="Usuário"/>
+					<h:outputText value="Usuário" />
 					<p:spacer height="10" />
 					<f:selectItems value="#{contaBean.lista}" var="conta"
 						itemValue="#{conta.conta}" itemLabel="#{conta.descricao}" />
@@ -45,13 +45,22 @@
 
 					<p:menuitem value="Lista Contratos"
 						outcome="/contratos_old/contratos_lista_e_atualiza"
-						icon="  ui-icon-folder-open">
+						icon="ui-icon-folder-open">
 						<f:param name="i" value="0" />
 					</p:menuitem>
 				</p:submenu>
-
-
+				
+				<p:submenu label="Usuários">
+				<p:menuitem value="Lista Contratos"
+						outcome="/usuarios/lista_usuario"
+						icon="ui-icon-folder-open">
+						<f:param name="i" value="0" />
+					</p:menuitem>
+				</p:submenu>
 			</p:menubar>
+			
+
+				
 
 			<table width="100%">
 				<tr>
